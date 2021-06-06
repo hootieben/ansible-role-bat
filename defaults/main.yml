@@ -1,0 +1,3 @@
+---
+bat_version: latest
+bat_install_path: "{{ ansible_env.HOME }}/.local/bin"

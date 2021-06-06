@@ -1,0 +1,29 @@
+---
+exclude: ^(roles|ansible_collections|molecule|.pre-commit-config.yaml)
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0
+    hooks:
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: detect-aws-credentials
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+
+  - repo: https://github.com/ansible/ansible-lint.git
+    rev: v5.0.11
+    hooks:
+      - id: ansible-lint
+        files: \.(yaml|yml)$
+        exclude: \.github
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.26.0
+    hooks:
+      - id: yamllint
+        files: \.(yaml|yml)$
+        types: [file, yaml]
+        exclude: meta/main.yml
+        entry: yamllint --strict

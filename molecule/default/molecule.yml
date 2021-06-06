@@ -1,0 +1,16 @@
+---
+dependency:
+  name: galaxy
+  enabled: false
+driver:
+  name: docker
+lint: |
+  set -e
+  ansible-lint .
+platforms:
+  - name: instance
+    image: ubuntu:focal
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

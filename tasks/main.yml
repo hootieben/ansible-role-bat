@@ -1,0 +1,8 @@
+---
+- name: "Check installed version"
+  ansible.builtin.shell:
+    executable: /bin/bash
+    cmd: set -o pipefail && "{{ bat_install_path }}/bat --version | grep -Po '[\d\.]+\S*'"
+  register: _bat_installed
+  changed_when: false
+  failed_when: false
