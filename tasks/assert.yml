@@ -1,0 +1,8 @@
+---
+- name: Check bat version variable
+  ansible.builtin.assert:
+    that:
+      - bat_version == 'latest' or (bat_version is match("v(\d+\.){2}\d+") and bat_version is version('v0.18.0', '>='))
+    fail_msg: bat_version should be 'latest' or in 'vX.Y.Z' format and greater than v0.18.0
+    quiet: true
+  check_mode: no
